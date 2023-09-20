@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/posts', PostController::class);
+
+Route::get('/create', function () {
+    return redirect()->route('posts.create');
+});
