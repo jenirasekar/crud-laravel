@@ -26,7 +26,7 @@
                                     <th scope="col" class="text-center">Gambar</th>
                                     <th scope="col" class="text-center">Judul</th>
                                     <th scope="col" class="text-center">Konten</th>
-                                    <th scope="col" class="text-center" >Aksi</th>
+                                    <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
