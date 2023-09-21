@@ -23,28 +23,28 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">Gambar</th>
-                                    <th scope="col">Judul</th>
-                                    <th scope="col">Content</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col" class="text-center">Gambar</th>
+                                    <th scope="col" class="text-center">Judul</th>
+                                    <th scope="col" class="text-center">Konten</th>
+                                    <th scope="col" class="text-center" >Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($posts as $post)
                                 <tr>
                                     <td class="text-center">
-                                        <img src="{{ Storage::url('public/posts/') . $post->image }}" alt="" class="rounded" style="width: 50px;">
+                                        <img src="{{ Storage::url('public/posts/') . $post->image }}" alt="" class="rounded" style="width: 75px;">
                                     </td>
                                     <td>{{ $post->title }}</td>
-                                    <td>{{!! $post->content !!}}</td>
-                                    <td class="text-center"></td>
-
-                                    <form action="{{ route('posts.destroy') . $post->id }}" onsubmit="return confirm('Apakah kamu yakin?')" method="post">
-                                        <a href="" class="btn btn-sm btn-primary">Edit</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" type="submit">Hapus</button>
-                                    </form>
+                                    <td>{{ $post->content }}</td>
+                                    <td class="text-center align-middle">
+                                        <form action="" onsubmit="return confirm('Apakah kamu yakin?')" method="post">
+                                            <a href="" class="btn btn-md btn-primary">Edit</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-md btn-danger" type="submit">Hapus</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @empty
                                 <div class="alert alert-danger">
@@ -66,15 +66,15 @@
 
     <!-- jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
     <!-- toastr.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-        if (session().has('success')) { 
-            toastr.success('{{ session("success") }}', 'Berhasil!');
-        } else if (session().has('error')) {
-            toastr.error('{{ session("error") }}', 'Gagal!');
-        }
+        @if(session()->has('success'))
+        toastr.success('{{ session("success") }}', 'Berhasil!');
+        @elseif(session()->has('error'))
+        toastr.error('{{ session("error") }}', 'Gagal!');
+        @endif
     </script>
 </body>
 
