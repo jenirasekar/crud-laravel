@@ -38,8 +38,8 @@
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->content }}</td>
                                     <td class="text-center align-middle">
-                                        <form action="" onsubmit="return confirm('Apakah kamu yakin?')" method="post">
-                                            <a href="" class="btn btn-md btn-primary">Edit</a>
+                                        <form action="{{ route('posts.destroy', $post->id) }}" onsubmit="return confirm('Apakah kamu yakin?')" method="post">
+                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-md btn-primary">Edit</a>
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-md btn-danger" type="submit">Hapus</button>

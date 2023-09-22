@@ -23,3 +23,7 @@ Route::resource('/posts', PostController::class);
 Route::get('/create', function () {
     return redirect()->route('posts.create');
 });
+
+Route::put('/edit', function () {
+    return redirect()->route('posts.update');
+});
