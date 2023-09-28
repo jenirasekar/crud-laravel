@@ -47,7 +47,7 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post) {
         $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
+            'image' => 'sometimes|nullable|required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
             'title' => 'required|min:5',
             'content' => 'required|min:10'
         ]);
@@ -55,8 +55,16 @@ class PostController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $image->storeAs('public/posts', $image->hashName());
-
-            Storage::delete('public/posts' . $post->image);
+            // hapus foto jika ada
+            if (Storage::exists('public/posts/' . $post->image)) {
+                Storage::delete('public/posts/' . $post->image);
+            }
+            // update path di db
+            $post->update([
+                'title' => $request->title,
+                'content' => $request->content,
+                'image' => $image->hashName()
+            ]);
         } else {
             $post->update([
                 'title' => $request->title,
