@@ -72,7 +72,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!-- ckeditor -->
-    <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('content');
     </script>
