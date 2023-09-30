@@ -30,7 +30,7 @@
                             <!-- judul -->
                             <div class="form-group mt-3">
                                 <label for="" class="fw-bold">Judul</label>
-                                <input type="text" name="title" id="title" class="form-control" @error('title') is-invalid @enderror placeholder="Masukkan judul post" value="{{ old('content') }}">
+                                <input type="text" name="title" id="title" class="form-control" @error('title') is-invalid @enderror placeholder="Masukkan judul post" value="{{ old('title') }}">
                                 @error('title')
                                 <div class="alert alert-danger">
                                     {{ $message }}
